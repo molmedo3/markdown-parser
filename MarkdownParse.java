@@ -16,19 +16,30 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (closeParen == -1 || openParen == -1 ){
+            
+            if (closeParen == -1 || openParen == -1 || closeBracket == -1 || openBracket == -1){
                 break;
             }
-            if (openBracket < 0) {
+            else if(openBracket - 1 < 0){
                 break;
+
             }
-            if(!markdown.substring(openBracket-1, openBracket).equals("!")){
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
-                currentIndex = closeParen + 1;
+           
+            if(markdown.substring(openBracket-1, openBracket).equals("!")){
+
+            } 
+            else if (!markdown.substring(closeBracket+1, closeBracket+2).equals("(")){
+
             }
             else{
-                break;
+                toReturn.add(markdown.substring(openParen+1, closeParen));
+                
             }
+            currentIndex = closeParen + 1;
+
+           
+
+            
         }
 
         return toReturn;

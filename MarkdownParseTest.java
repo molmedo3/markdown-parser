@@ -112,6 +112,42 @@ public class MarkdownParseTest {
         ArrayList<String> links = MarkdownParse.getLinks(content);
         ArrayList<String> something = new ArrayList<>();
         assertEquals(something, links);        
-    }  
+    }
+    
+    
+    @Test
+    public void snippet1Test() throws IOException{
+        Path fileName = Path.of("C:/Users/jolme/OneDrive/Documents/GitHub/markdown-parser/snippet1.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> something = new ArrayList<>();
+        something.add("google.com");
+        assertEquals(something, links);        
+    }
+    
+    @Test
+    public void snippet2Test() throws IOException{
+        Path fileName = Path.of("C:/Users/jolme/OneDrive/Documents/GitHub/markdown-parser/snippet2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> something = new ArrayList<>();
+        something.add("b.com");
+        something.add("example.com");
+        assertEquals(something, links);        
+    }
+
+    @Test
+    public void snippet3Test() throws IOException{
+        Path fileName = Path.of("C:/Users/jolme/OneDrive/Documents/GitHub/markdown-parser/snippet3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> links = MarkdownParse.getLinks(content);
+        ArrayList<String> something = new ArrayList<>();
+        something.add("https://www.twitter.com");
+        something.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+        something.add("https://cse.ucsd.edu/");
+        assertEquals(something, links);        
+    }
+
+
     
 }
